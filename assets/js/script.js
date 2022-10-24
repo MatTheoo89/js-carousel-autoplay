@@ -34,6 +34,33 @@ console.log(items);
 items[counterImg].classList.add('visible');
 
 
+// funzione timer
+const clock = setInterval(function(){
+  // se il contatore è più basso dell'array
+  if(counterImg < imgArray.length - 1){
+    // togli la classe
+    items[counterImg].classList.remove('visible');
+    // +1 al contattore
+    counterImg++;
+    // aggiungi la classe a C appena aggiornato
+    items[counterImg].classList.add('visible');
+  }
+  else{
+    // altrimenti il C lo porti a zero
+    counterImg = 0;
+    // all'ultima img togli che si veda
+    items[imgArray.length - 1].classList.remove('visible');
+    // alla prima gli aggiungi che si veda
+    items[0].classList.add('visible');
+  }
+  console.log(counterImg);
+},6000);
+
+// items[counterImg].addEventListener('mouseOver', function(){
+//   clearInterval(clock);
+// });
+
+
 next.addEventListener('click', function(){
   items[counterImg].classList.remove('visible');
   
@@ -50,12 +77,19 @@ next.addEventListener('click', function(){
 
 
 prev.addEventListener('click', function(){
-items[counterImg].classList.remove('visible');
-if(counterImg === 0){
-  counterImg = imgArray.length - 1;
-}
-else{
-  counterImg--;
-}
-items[counterImg].classList.add('visible');
+  items[counterImg].classList.remove('visible');
+  if(counterImg === 0){
+    counterImg = imgArray.length - 1;
+  }
+  else{
+    counterImg--;
+  }
+  items[counterImg].classList.add('visible');
 });
+
+
+
+/*
+cambia img visualizzata ogni 4 secondi, quando arrivi all'ultima riparti dalla prima
+*/
+
